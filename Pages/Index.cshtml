@@ -1,0 +1,55 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Zoo Visitors App";
+}
+
+<div class="zoo-hero">
+    <div class="zoo-hero__content">
+        <span class="badge rounded-pill text-bg-light mb-3">🐾 Daily Zoo Planner</span>
+        <h1 class="display-5 fw-bold mb-3">Welcome to the Zoo Visitors App</h1>
+        <p class="lead text-white-50 mb-0">Discover which animal is feeling hungry and what exciting event is happening today at the zoo.</p>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card zoo-card shadow-lg border-0">
+            <div class="card-body p-4 p-md-5">
+                <form method="post" class="row g-4 align-items-end">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold" for="hungerLevel">Enter the animal's hunger level (1-10)</label>
+                        <input class="form-control form-control-lg" type="number" id="hungerLevel" name="hungerLevel" min="1" max="10" placeholder="e.g. 8" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold" for="dayOfWeek">Enter the day of the week (1-7, where 1 is Sunday)</label>
+                        <input class="form-control form-control-lg" type="number" id="dayOfWeek" name="dayOfWeek" min="1" max="7" placeholder="e.g. 5" />
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg px-5">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.HungerMessage))
+        {
+            <div class="results mt-4">
+                <div class="result-item">
+                    <span class="result-icon">🐘</span>
+                    <p>@Model.HungerMessage</p>
+                </div>
+                <div class="result-item">
+                    <span class="result-icon">🎵</span>
+                    <p>@Model.SoundMessage</p>
+                </div>
+                <div class="result-item">
+                    <span class="result-icon">📅</span>
+                    <p>@Model.DayMessage</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
